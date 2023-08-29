@@ -10,7 +10,7 @@ function App() {
   let post = '대소고 2023';
   // 기존 Js는 document.querySelector등등 엄청 길게 써야함 
   // 하지만 JSX는 변수 사용 시 중괄호만 하면 됨
-  let [글제목, b] = useState(['대소고 1학년 동복', '1학년 해양수련원 일정표', '9월 26-27일 중간고사'])
+  let [글제목, 글제목변경] = useState(['대소고 1학년 동복', '1학년 해양수련원 일정표', '9월 26-27일 중간고사'])
   // 자료 잠깐 보관하기
   // impot {useState} -> useState(보관자료) -> let [작명, 작명]
   //b -> state 변경 도와주는 함수
@@ -45,6 +45,22 @@ function App() {
         {/* <h4 id="{post}">블로그</h4>도 가능 
         이케 사용하면 아이디가 대소고 기숙사 204호가 되는것 */}
       </div>
+
+      <button onClick={()=>{
+
+        let arr = [1, 2, 3];
+        // Array/object 담은 변수에만 화살표 저장 됨
+        //array, object 는 referce data type
+
+        let copy = [...글제목];
+        copy[0] = '해양수련원 준비물'
+        글제목변경(copy);
+      }}> 글 수정 </button>
+      {/* state 변경 함수 
+      기존 state== 신규 state 경우 변경 불가 */}
+
+      {/* state가 array/object면 독립적 카피본 만들어 수정해야 함 (shallow copy)*/}
+
       <div className="list">
         <h4>{ 글제목[0] } <span onClick={ ()=> { 따봉변경(따봉+1) }}> 👍 </span> { 따봉 } </h4>
         {/*onClick ={} 안에 함수 넣기*/}
