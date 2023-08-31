@@ -61,6 +61,8 @@ function App() {
 
       {/* state가 array/object면 독립적 카피본 만들어 수정해야 함 (shallow copy)*/}
 
+      {/* 컴퍼넌트는 state를 사용 시 에러 */}
+
       <div className="list">
         <h4>{ 글제목[0] } <span onClick={ ()=> { 따봉변경(따봉+1) }}> 👍 </span> { 따봉 } </h4>
         {/*onClick ={} 안에 함수 넣기*/}
@@ -78,8 +80,43 @@ function App() {
         <p> 8월 27일 발행 </p>
       </div>
       {/* <h4>{ post }</h4> */}
+
+      <Modal></Modal>
+      {/* </Modal> */}
+      {/* 도 가능 */}
+
     </div>
   );
+}
+
+// const Modal = () => {
+// //  const 사용시 실수 에러 메세지 출력 해줌
+// }
+
+function Modal(){ 
+  //Modal -> 컴포넌트
+  // 다른 함수 밖에서 만들기, 영어 대문자
+  return(
+    <>
+    {/* 리액트에서 병렬적으로 div 태그를 쓰기 위해서는 감싸는 게 필요
+    의미 없는 div 대신 <>로 감싸기 가능 */}
+    <div className='modal'>
+        <h4> 제목 </h4>
+        <p> 날짜 </p>
+        <p> 상세내용 </p>
+      </div>
+      {/* 컴퍼넌트 만드는 법 
+      1. function 만들기 
+      2. return안에 html 담기 
+      3. <함수명></함수명> 하기 */}
+
+      {/* 컴퍼넌트로 만들면 좋은 것 
+      1. 반복적 html 축약 시 
+      2. 큰 페이지들 
+      3. 자주 변경 되는 것 */}
+      <div>야호</div>
+    </>
+  )
 }
 
 export default App;
